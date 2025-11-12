@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      width: 320px;
+      padding: 16px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      margin: 0;
+    }
+    
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid #8BA888;
+    }
+    
+    .header img {
+      width: 32px;
+      height: 32px;
+    }
+    
+    .header h1 {
+      margin: 0;
+      font-size: 18px;
+      color: #1f2937;
+    }
+    
+    .status-indicator {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px;
+      background-color: #f3f4f6;
+      border-radius: 6px;
+      margin-bottom: 12px;
+    }
+    
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #ef4444;
+    }
+    
+    .status-dot.connected {
+      background-color: #10b981;
+    }
+    
+    .status-text {
+      font-size: 13px;
+      font-weight: 500;
+      color: #374151;
+    }
+    
+    .info {
+      font-size: 13px;
+      color: #6b7280;
+      margin-bottom: 12px;
+      line-height: 1.5;
+    }
+    
+    .user-info {
+      background-color: #f0fdf4;
+      padding: 10px;
+      border-radius: 6px;
+      margin-bottom: 12px;
+      font-size: 13px;
+    }
+    
+    button {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+    
+    button:disabled {
+      background-color: #d1d5db;
+      color: #9ca3af;
+      cursor: not-allowed;
+    }
+    
+    #captureBtn {
+      background-color: #8BA888;
+      color: white;
+      margin-bottom: 8px;
+    }
+    
+    #captureBtn:hover:not(:disabled) {
+      background-color: #7A9777;
+    }
+    
+    #setupBtn {
+      background-color: #3b82f6;
+      color: white;
+      margin-bottom: 12px;
+    }
+    
+    #setupBtn:hover {
+      background-color: #2563eb;
+    }
+    
+    .error {
+      background-color: #fee2e2;
+      color: #991b1b;
+      padding: 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      margin-top: 8px;
+      display: none;
+    }
+    
+    .error.show {
+      display: block;
+    }
+    
+    .success {
+      background-color: #dcfce7;
+      color: #166534;
+      padding: 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      margin-top: 8px;
+      display: none;
+    }
+    
+    .success.show {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <img src="icon48.png" alt="Aer">
+    <h1>Aer Capture</h1>
+  </div>
+  
+  <div class="status-indicator" id="statusIndicator">
+    <div class="status-dot" id="statusDot"></div>
+    <span class="status-text" id="statusText">Checking...</span>
+  </div>
+  
+  <div class="info">
+    Capture this page to your Aer context OS with end-to-end encryption.
+  </div>
+  
+  <div class="user-info" id="userInfo" style="display: none;">
+    <strong>Status:</strong> <span id="userEmail">Connected</span>
+  </div>
+  
+  <button id="setupBtn" style="display: none;">
+    Setup Authentication
+  </button>
+  
+  <button id="captureBtn" disabled>
+    Capture This Page
+  </button>
+  
+  <div class="error" id="errorMsg"></div>
+  <div class="success" id="successMsg"></div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>
